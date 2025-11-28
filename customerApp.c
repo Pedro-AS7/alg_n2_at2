@@ -35,7 +35,7 @@ void showAddress()
 
 void createDishOrder(struct Restaurant restaurant, struct Dish dish, char dishOptions[25][MAX_LEN], int optionCount)
 {
-  printf("\nAdicionando item à sacola...\n");
+  printf("\nAdicionando item a sacola...\n");
   struct DishOrder dishOrder;
 
   dishOrder.dish = dish;
@@ -48,7 +48,7 @@ void createDishOrder(struct Restaurant restaurant, struct Dish dish, char dishOp
   {
     if (orders[i].user_id == currentUser->id && orders[i].status != STATUS_CANCELED && orders[i].status != STATUS_COMPLETED)
     {
-      printf("(!) Você tem um pedido em andamento. Aguarde a finalização.\n");
+      printf("(!) Voce tem um pedido em andamento. Aguarde a finalizacao.\n");
       return;
     }
   }
@@ -90,7 +90,7 @@ void createDishOrder(struct Restaurant restaurant, struct Dish dish, char dishOp
   bags[userBag->id].totalPrice = bags[userBag->id].totalPrice + dish.price;
   bags[userBag->id].restaurantId = restaurant.id;
 
-  printf("[v] Item adicionado à sacola!\n");
+  printf("[v] Item adicionado a sacola!\n");
 }
 
 void dishOptions(const struct Restaurant restaurant, struct Dish dish)
@@ -105,7 +105,7 @@ void dishOptions(const struct Restaurant restaurant, struct Dish dish)
     {
       if (dish.amount == 0)
       {
-        printf("(!) Este prato está indisponível!");
+        printf("(!) Este prato esta indisponivel!");
         return;
       }
       printf("\n--- Personalize seu Pedido ---\n");
@@ -136,10 +136,10 @@ void restaurantMenu(const struct Restaurant restaurant)
   {
     if (restaurant.dishCount == 0)
     {
-      printf("Este restaurante não tem pratos cadastrados\n");
+      printf("Este restaurante nao tem pratos cadastrados\n");
       break;
     }
-    printf("\n%s        CARDÁPIO: %s        \n%s", DIVIDER, restaurant.name, DIVIDER);
+    printf("\n%s        CARDAPIO: %s        \n%s", DIVIDER, restaurant.name, DIVIDER);
     for (int i = 0; i < restaurant.dishCount; i++)
     {
       struct Dish currentDish = restaurant.dishes[i];
@@ -160,7 +160,6 @@ void restaurantMenu(const struct Restaurant restaurant)
     dishOptions(restaurant, restaurant.dishes[option - 1]);
   } while (true);
 }
-
 
 void intoRestaurant(const struct Restaurant restaurant)
 {
@@ -205,7 +204,7 @@ void restaurantsSection()
   int option = 0;
   do
   {
-    printf("\n%s     RESTAURANTES DISPONÍVEIS     \n%s", DIVIDER, DIVIDER);
+    printf("\n%s     RESTAURANTES DISPONIVEIS     \n%s", DIVIDER, DIVIDER);
     for (int i = 0; i < restaurants_count; i++)
     {
       printf("%d. %s\n", i + 1, restaurants[i].name);
@@ -227,7 +226,7 @@ void addressSection()
   int option = 0;
   do
   {
-    printf("\n%s      MEUS ENDEREÇOS      \n%s", DIVIDER, DIVIDER);
+    printf("\n%s      MEUS ENDERECOS      \n%s", DIVIDER, DIVIDER);
     showAddress();
     option = optionHandler("1. Adicionar endereco\n2. Remover endereco\n3. Voltar\nOpcao: ");
 
@@ -284,7 +283,7 @@ void cardSection()
   int option = 0;
   do
   {
-    printf("\n%s       MEUS CARTÕES       \n%s", DIVIDER, DIVIDER);
+    printf("\n%s       MEUS CARTOES       \n%s", DIVIDER, DIVIDER);
     showCards();
     option = optionHandler("1. Adicionar cartao\n2. Remover cartao\n3. Voltar\nOpcao: ");
 
@@ -324,7 +323,7 @@ void profile()
   int option = 0;
   do
   {
-    printf("\n%s     CONFIGURAÇÕES DA CONTA     \n%s", DIVIDER, DIVIDER);
+    printf("\n%s     CONFIGURACOES DA CONTA     \n%s", DIVIDER, DIVIDER);
     option = optionHandler("1. Enderecos\n2. Cartoes\n3. Dados da conta\n4. Voltar\nOpcao: ");
     switch (option)
     {
@@ -373,7 +372,7 @@ void finalizeBag(struct Bag *bag)
   printf("\n%s   FINALIZANDO PEDIDO   \n%s", DIVIDER, DIVIDER);
   do
   {
-    printf("Selecione o endereço de entrega: \n");
+    printf("Selecione o endereco de entrega: \n");
     showAddress();
     addressOption = optionHandler("Opcao: ");
     if (addressOption < 1 || addressOption > currentUser->address_count)
@@ -652,7 +651,7 @@ void orderStatus()
 
 void orderHistory()
 {
-  printf("\n%s   HISTÓRICO DE PEDIDOS   \n%s", DIVIDER, DIVIDER);
+  printf("\n%s   HISTORICO DE PEDIDOS   \n%s", DIVIDER, DIVIDER);
   bool hasHistory = false;
   for (int i = 0; i < orders_count; i++)
   {
@@ -667,7 +666,7 @@ void orderHistory()
   }
   if (!hasHistory)
   {
-    printf("Nenhum histórico disponível.\n");
+    printf("Nenhum historico disponivel.\n");
   }
   printf("%s", DIVIDER);
 }

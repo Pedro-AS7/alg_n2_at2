@@ -28,7 +28,7 @@ struct User users[MAX_CLIENTS] = {
 
     {.id = 10, .username = "Ze da Pizza", .email = "ze@pizza", .password = "ze123", .accountType = ADMIN, .address_count = 1, .address = {{.cep = "71000-000", .neighborhood = "Taguatinga", .street = "Comercial Norte", .number = "Loja 1", .complement = "Fundos"}}, .creditcard_count = 0},
 
-    {.id = 3, .username = "João Santos", .email = "joao@email", .password = "joao123", .accountType = CUSTOMER, .address_count = 1, .address = {{.cep = "72000-000", .neighborhood = "Ceilandia", .street = "QNM 11", .number = "Lote 5", .complement = "Casa"}}, .creditcard_count = 1, .creditCard = {{.number = "1111 2222 3333 4444", .name = "JOAO SANTOS", .securityCode = "456", .validity = "05/29"}}},
+    {.id = 3, .username = "Joao Santos", .email = "joao@email", .password = "joao123", .accountType = CUSTOMER, .address_count = 1, .address = {{.cep = "72000-000", .neighborhood = "Ceilandia", .street = "QNM 11", .number = "Lote 5", .complement = "Casa"}}, .creditcard_count = 1, .creditCard = {{.number = "1111 2222 3333 4444", .name = "JOAO SANTOS", .securityCode = "456", .validity = "05/29"}}},
 
     {.id = 4, .username = "Ana Costa", .email = "ana@email", .password = "ana123", .accountType = CUSTOMER, .address_count = 1, .address = {{.cep = "73000-000", .neighborhood = "Aguas Lindas", .street = "Quadra 10", .number = "Casa 15", .complement = ""}}, .creditcard_count = 2, .creditCard = {{.number = "5555 6666 7777 8888", .name = "ANA COSTA", .securityCode = "789", .validity = "03/27"}, {.number = "9999 8888 7777 6666", .name = "ANA COSTA", .securityCode = "321", .validity = "08/26"}}},
 
@@ -36,7 +36,7 @@ struct User users[MAX_CLIENTS] = {
 
     {.id = 13, .username = "Roberto TOP", .email = "roberto@burger", .password = "roberto123", .accountType = ADMIN, .address_count = 1, .address = {{.cep = "75000-000", .neighborhood = "Samambaia", .street = "QR 302", .number = "Loja 8", .complement = ""}}, .creditcard_count = 0},
 
-    {.id = 14, .username = "Fernanda Porto", .email = "fernanda@acai", .password = "fernanda123", .accountType = ADMIN, .address_count = 1, .address = {{.cep = "76000-000", .neighborhood = "Guará", .street = "QE 15", .number = "Loja 3", .complement = "Próximo ao mercado"}}, .creditcard_count = 0}
+    {.id = 14, .username = "Fernanda Porto", .email = "fernanda@acai", .password = "fernanda123", .accountType = ADMIN, .address_count = 1, .address = {{.cep = "76000-000", .neighborhood = "Guara", .street = "QE 15", .number = "Loja 3", .complement = "Proximo ao mercado"}}, .creditcard_count = 0}
 
 };
 
@@ -73,19 +73,19 @@ struct Order orders[300] = {
     // PEDIDOS DO PEDRO (ID 1) - Aguas Claras
     // ============================================================
 
-    // Pedido 1: Pizza Mussarela (com opções) + Pizza Calabresa
+    // Pedido 1: Pizza Mussarela (com opcoes) + Pizza Calabresa
     {.id = 1, .user_id = 1, .restaurant_id = 0, .status = STATUS_CONFIRMED, .price = 87.00, .paymentMethod = CREDITCARD, .creationDate = 1762030000, .deliveryDate = 1762034000, .address = {.cep = "79152-50", .neighborhood = "Aguas Claras"}, .dishOrdersCount = 2, .dishOrders = {{.dish = {.id = 0, .name = "Pizza Mussarela", .price = 45.00, .restaurantId = 0, .amount = 10, .optionCount = 2}, .dishOptionsCount = 2, .dishOptions = {"Catupiry", "Massa Fina"}}, {.dish = {.id = 1, .name = "Pizza Calabresa", .price = 42.00, .restaurantId = 0, .amount = 15, .optionCount = 0}}}},
 
     // Pedido 2: Barca
     {.id = 2, .user_id = 1, .restaurant_id = 1, .status = STATUS_CONFIRMED, .price = 89.90, .paymentMethod = PIX, .creationDate = 1762120000, .deliveryDate = 1762125000, .address = {.cep = "79152-50", .neighborhood = "Aguas Claras"}, .dishOrdersCount = 1, .dishOrders = {{.dish = {.id = 0, .name = "Barca 30 Pecas", .price = 89.90, .restaurantId = 1, .amount = 5, .optionCount = 0}}}},
 
-    // Pedido 3: Smash Burger (com opções)
+    // Pedido 3: Smash Burger (com opcoes)
     {.id = 3, .user_id = 1, .restaurant_id = 3, .status = STATUS_CONFIRMED, .price = 32.00, .paymentMethod = CREDITCARD, .creationDate = 1762210000, .deliveryDate = 1762213000, .address = {.cep = "79152-50", .neighborhood = "Aguas Claras"}, .dishOrdersCount = 1, .dishOrders = {{.dish = {.id = 0, .name = "Smash Burger Duplo", .price = 32.00, .restaurantId = 3, .amount = 50, .optionCount = 2}, .dishOptionsCount = 2, .dishOptions = {"Ao Ponto", "Coca-Cola"}}}},
 
-    // Pedido 4: Misto + Cappuccino (com opção)
+    // Pedido 4: Misto + Cappuccino (com opcao)
     {.id = 4, .user_id = 1, .restaurant_id = 2, .status = STATUS_CONFIRMED, .price = 20.50, .paymentMethod = CASH, .creationDate = 1762300000, .deliveryDate = 1762301000, .address = {.cep = "79152-50", .neighborhood = "Aguas Claras"}, .dishOrdersCount = 2, .dishOrders = {{.dish = {.id = 1, .name = "Misto Quente", .price = 12.00, .restaurantId = 2, .amount = 10, .optionCount = 0}}, {.dish = {.id = 2, .name = "Cappuccino", .price = 8.50, .restaurantId = 2, .amount = 20, .optionCount = 1}, .dishOptionsCount = 1, .dishOptions = {"Medio"}}}},
 
-    // Pedido 5: Copo Açaí (com opção)
+    // Pedido 5: Copo Acai (com opcao)
     {.id = 5, .user_id = 1, .restaurant_id = 4, .status = STATUS_CONFIRMED, .price = 18.00, .paymentMethod = PIX, .creationDate = 1762390000, .deliveryDate = 1762392000, .address = {.cep = "79152-50", .neighborhood = "Aguas Claras"}, .dishOrdersCount = 1, .dishOrders = {{.dish = {.id = 0, .name = "Copo 500ml", .price = 18.00, .restaurantId = 4, .amount = 100, .optionCount = 1}, .dishOptionsCount = 1, .dishOptions = {"Leite Ninho"}}}},
 
     // Meio de Novembro
@@ -167,7 +167,7 @@ struct Order orders[300] = {
     {.id = 40, .user_id = 2, .restaurant_id = 3, .status = STATUS_PENDING, .price = 32.00, .creationDate = 1764352000, .deliveryDate = 0, .address = {.cep = "70000-000", .neighborhood = "Asa Norte"}, .dishOrdersCount = 1, .dishOrders = {{.dish = {.id = 0, .name = "Smash Burger Duplo", .price = 32.00, .restaurantId = 3, .amount = 50, .optionCount = 2}, .dishOptionsCount = 2, .dishOptions = {"Mal Passado", "Guarana"}}}},
 
     // ============================================================
-    // PEDIDOS DO JOÃO (ID 3) - Ceilândia
+    // PEDIDOS DO JOaO (ID 3) - Ceilândia
     // ============================================================
     {.id = 41, .user_id = 3, .restaurant_id = 0, .status = STATUS_CONFIRMED, .price = 90.00, .paymentMethod = CASH, .creationDate = 1763380000, .deliveryDate = 1763384500, .address = {.cep = "72000-000", .neighborhood = "Ceilandia", .street = "QNM 11"}, .dishOrdersCount = 2, .dishOrders = {{.dish = {.id = 0, .name = "Pizza Mussarela", .price = 45.00, .restaurantId = 0, .amount = 10, .optionCount = 2}, .dishOptionsCount = 2, .dishOptions = {"Catupiry", "Massa Fina"}}, {.dish = {.id = 0, .name = "Pizza Mussarela", .price = 45.00, .restaurantId = 0, .amount = 10, .optionCount = 2}, .dishOptionsCount = 2, .dishOptions = {"Cheddar", "Massa Pan"}}}},
 
@@ -336,7 +336,7 @@ struct Order orders[300] = {
     {.id = 120, .user_id = 4, .restaurant_id = 4, .status = STATUS_CONFIRMED, .price = 18.00, .creationDate = 1764295000, .address = {.cep = "73000-000", .neighborhood = "Aguas Lindas"}, .dishOrdersCount = 1, .dishOrders = {{.dish = {.id = 0, .name = "Copo 500ml", .price = 18.00, .restaurantId = 4, .amount = 100, .optionCount = 1}, .dishOptionsCount = 1, .dishOptions = {"Leite Ninho"}}}},
 
     // --- HOJE: Sexta-feira, 28 de Novembro de 2025 (IDs 121-140) ---
-    // Manhã e Início da Tarde
+    // Manha e Inicio da Tarde
 
     {.id = 121, .user_id = 1, .restaurant_id = 2, .status = STATUS_CONFIRMED, .price = 30.90, .creationDate = 1764320000, .address = {.cep = "79152-50", .neighborhood = "Aguas Claras"}, .dishOrdersCount = 2, .dishOrders = {{.dish = {.id = 0, .name = "Pao Frances (kg)", .price = 18.90, .restaurantId = 2, .amount = 50, .optionCount = 0}}, {.dish = {.id = 1, .name = "Misto Quente", .price = 12.00, .restaurantId = 2, .amount = 10, .optionCount = 0}}}},
 

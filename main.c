@@ -213,13 +213,13 @@ struct User users[MAX_CLIENTS] = {
 
 int users_count = 3; // Atualizado para 3
 
-// Inicializando sacolas para os 3 usuários criados
+// Inicializando sacolas para os 3 usuarios criados
 struct Bag bags[MAX_CLIENTS] = {
     {.id = 0, .userId = 1, .restaurantId = -1, .totalPrice = 0, .dishOrdersCount = 0},
     {.id = 1, .userId = 2, .restaurantId = -1, .totalPrice = 0, .dishOrdersCount = 0},
     {.id = 2, .userId = 10, .restaurantId = -1, .totalPrice = 0, .dishOrdersCount = 0}};
 
-int bags_count = 3; // Uma sacola para cada usuário inicial
+int bags_count = 3; // Uma sacola para cada usuario inicial
 
 struct Favorite favorites[100] = {
     {.userId = 2,
@@ -237,7 +237,7 @@ int restaurants_count = 5;
 struct Restaurant restaurants[10] = {
     // Restaurante 1: Pizzaria
     {.id = 0,
-     .owner_id = 10, // Pertence ao usuário Zé (ID 10)
+     .owner_id = 10, // Pertence ao usuario Zé (ID 10)
      .name = "Pizzaria do Ze",
      .dishCount = 2,
      .opening_hours = {.dom = {"18:00", "23:00"}, .seg = {"Fec", "Fec"}, .ter = {"18:00", "23:00"}, .qua = {"18:00", "23:00"}, .qui = {"18:00", "23:00"}, .sex = {"18:00", "00:00"}, .sab = {"18:00", "00:00"}},
@@ -254,7 +254,7 @@ struct Restaurant restaurants[10] = {
     // Restaurante 4: Hamburgueria
     {.id = 3, .owner_id = 13, .name = "Hamburgueria TOP", .dishCount = 1, .opening_hours = {.dom = {"18:00", "23:00"}, .seg = {"Fec", "Fec"}, .ter = {"18:00", "23:00"}, .qua = {"18:00", "23:00"}, .qui = {"18:00", "23:00"}, .sex = {"18:00", "02:00"}, .sab = {"18:00", "02:00"}}, .dishes = {{.id = 401, .name = "Smash Burger Duplo", .price = 32.00, .restaurantId = 3, .description = "2 Carnes smash, cheddar, bacon e molho.", .amount = 50, .optionCount = 2, .options = {{.dish_id = 401, .name = "Ponto da Carne", .optionsCount = 3, .options = {"Mal Passado", "Ao Ponto", "Bem Passado"}}, {.dish_id = 401, .name = "Bebida", .optionsCount = 3, .options = {"Coca-Cola", "Guarana", "Sem Bebida"}}}}}},
 
-    // Restaurante 5: Açaí (Novo)
+    // Restaurante 5: Acai (Novo)
     {.id = 4, .owner_id = 14, .name = "Acai do Porto", .dishCount = 2, .opening_hours = {.dom = {"14:00", "20:00"}, .seg = {"12:00", "20:00"}, .ter = {"12:00", "20:00"}, .qua = {"12:00", "20:00"}, .qui = {"12:00", "20:00"}, .sex = {"12:00", "22:00"}, .sab = {"12:00", "22:00"}}, .dishes = {{.id = 501, .name = "Copo 500ml", .price = 18.00, .restaurantId = 4, .description = "Acai puro batido com banana.", .amount = 100, .optionCount = 1, .options = {{.dish_id = 501, .name = "Complementos", .optionsCount = 4, .options = {"Leite Ninho", "Granola", "Morango", "Pacoca"}}}}, {.id = 502, .name = "Barca de Acai", .price = 45.00, .restaurantId = 4, .description = "1kg de Acai com 5 acompanhamentos.", .amount = 10, .optionCount = 0}}},
 };
 
@@ -366,7 +366,7 @@ struct Address createAddress()
   char neighborhood[MAX_LEN];
   struct Address newAddr = {0};
 
-  printf("\n--- Novo Endereço ---\n");
+  printf("\n--- Novo Endereco ---\n");
   printf("CEP: ");
   if (fgets(cep, 10, stdin) == NULL)
     return newAddr;
@@ -404,13 +404,13 @@ void addAddress()
 {
   if (currentUser->address_count >= 5)
   {
-    printf("\n(!) Limite de endereços atingido.\n");
+    printf("\n(!) Limite de enderecos atingido.\n");
     return;
   }
 
   currentUser->address[currentUser->address_count] = createAddress();
   currentUser->address_count++;
-  printf("\n[v] Endereço adicionado com sucesso!\n");
+  printf("\n[v] Endereco adicionado com sucesso!\n");
 }
 
 void inputDaySchedule(const char *dayName, struct DaySchedule *schedule)
@@ -430,14 +430,14 @@ void setOpeningHours(struct Restaurant *restaurant)
 {
   struct DaySchedule dom, seg, ter, qua, qui, sex, sab;
 
-  printf("\n%s\nDefina o horário de funcionamento:\n%s", DIVIDER, SUB_DIVIDER);
+  printf("\n%s\nDefina o horario de funcionamento:\n%s", DIVIDER, SUB_DIVIDER);
   inputDaySchedule("Domingo", &dom);
   inputDaySchedule("Segunda-feira", &seg);
-  inputDaySchedule("Terça-feira", &ter);
+  inputDaySchedule("Terca-feira", &ter);
   inputDaySchedule("Quarta-feira", &qua);
   inputDaySchedule("Quinta-feira", &qui);
   inputDaySchedule("Sexta-feira", &sex);
-  inputDaySchedule("Sábado", &sab);
+  inputDaySchedule("Sabado", &sab);
 
   restaurant->opening_hours.dom = dom;
   restaurant->opening_hours.seg = seg;
@@ -452,7 +452,7 @@ void deleteAddress(int addressIndex)
 {
   if (currentUser->address_count == 0 || addressIndex < 0 || addressIndex >= currentUser->address_count)
   {
-    printf("Erro: Índice inválido.\n");
+    printf("Erro: indice invalido.\n");
     return;
   }
 
@@ -463,7 +463,7 @@ void deleteAddress(int addressIndex)
 
   currentUser->address_count--;
 
-  printf("\n%s Endereço removido com sucesso.\n%s", SUB_DIVIDER, SUB_DIVIDER);
+  printf("\n%s Endereco removido com sucesso.\n%s", SUB_DIVIDER, SUB_DIVIDER);
 }
 
 void addCard()
@@ -475,11 +475,11 @@ void addCard()
 
   if (currentUser->creditcard_count >= 5)
   {
-    printf("\n(!) Limite de cartões atingido.\n");
+    printf("\n(!) Limite de cartoes atingido.\n");
     return;
   }
 
-  printf("\n--- Novo Cartão ---\n");
+  printf("\n--- Novo Cartao ---\n");
   printf("Nome no cartao: ");
   if (fgets(name, MAX_LEN, stdin) == NULL)
     return;
@@ -515,7 +515,7 @@ void deleteCard(int cardIndex)
 {
   if (currentUser->creditcard_count == 0 || cardIndex < 0 || cardIndex >= currentUser->creditcard_count)
   {
-    printf("Numero selecionado inválido.\n");
+    printf("Numero selecionado invalido.\n");
     return;
   }
 
@@ -592,7 +592,7 @@ void deleteDishOption(struct Dish *dish, int optionIndex)
 {
   if (dish->optionCount == 0 || optionIndex < 0 || optionIndex >= dish->optionCount)
   {
-    printf("Índice inválido.\n");
+    printf("indice invalido.\n");
     return;
   }
 
@@ -630,7 +630,7 @@ void deleteDishOptionOptions(struct DishOptions *dishOptions, int optionIndex)
 {
   if (dishOptions->optionsCount == 0 || optionIndex < 0 || optionIndex >= dishOptions->optionsCount)
   {
-    printf("Índice de deleção inválido.\n");
+    printf("indice de delecao invalido.\n");
     return;
   }
 
@@ -765,7 +765,7 @@ void deleteDish(struct Restaurant *restaurant, int dishIndex)
 {
   if (restaurant->dishCount == 0 || dishIndex < 0 || dishIndex >= restaurant->dishCount)
   {
-    printf("Índice inválido.\n");
+    printf("indice invalido.\n");
     return;
   }
 
@@ -792,7 +792,7 @@ void showRestaurantOrders(struct Restaurant *restaurant)
       for (int j = 0; j < orders[i].dishOrdersCount; j++)
       {
         struct DishOrder currentDishOrder = orders[i].dishOrders[j];
-        printf("  > %s (Opções: %d)\n", currentDishOrder.dish.name, currentDishOrder.dishOptionsCount);
+        printf("  > %s (Opcoes: %d)\n", currentDishOrder.dish.name, currentDishOrder.dishOptionsCount);
       }
       printf("%s", SUB_DIVIDER);
     }
@@ -851,7 +851,7 @@ void showAddress()
 
 void createDishOrder(struct Restaurant restaurant, struct Dish dish, char dishOptions[25][MAX_LEN], int optionCount)
 {
-  printf("\nAdicionando item à sacola...\n");
+  printf("\nAdicionando item a sacola...\n");
   struct DishOrder dishOrder;
 
   dishOrder.dish = dish;
@@ -864,7 +864,7 @@ void createDishOrder(struct Restaurant restaurant, struct Dish dish, char dishOp
   {
     if (orders[i].user_id == currentUser->id && orders[i].status != STATUS_CANCELED && orders[i].status != STATUS_COMPLETED)
     {
-      printf("(!) Você tem um pedido em andamento. Aguarde a finalização.\n");
+      printf("(!) Voce tem um pedido em andamento. Aguarde a finalizacao.\n");
       return;
     }
   }
@@ -906,7 +906,7 @@ void createDishOrder(struct Restaurant restaurant, struct Dish dish, char dishOp
   bags[userBag->id].totalPrice = bags[userBag->id].totalPrice + dish.price;
   bags[userBag->id].restaurantId = restaurant.id;
 
-  printf("[v] Item adicionado à sacola!\n");
+  printf("[v] Item adicionado a sacola!\n");
 }
 
 void dishOptions(const struct Restaurant restaurant, struct Dish dish)
@@ -921,7 +921,7 @@ void dishOptions(const struct Restaurant restaurant, struct Dish dish)
     {
       if (dish.amount == 0)
       {
-        printf("(!) Este prato está indisponível!");
+        printf("(!) Este prato esta indisponivel!");
         return;
       }
       printf("\n--- Personalize seu Pedido ---\n");
@@ -952,10 +952,10 @@ void restaurantMenu(const struct Restaurant restaurant)
   {
     if (restaurant.dishCount == 0)
     {
-      printf("Este restaurante não tem pratos cadastrados\n");
+      printf("Este restaurante nao tem pratos cadastrados\n");
       break;
     }
-    printf("\n%s        CARDÁPIO: %s        \n%s", DIVIDER, restaurant.name, DIVIDER);
+    printf("\n%s        CARDaPIO: %s        \n%s", DIVIDER, restaurant.name, DIVIDER);
     for (int i = 0; i < restaurant.dishCount; i++)
     {
       struct Dish currentDish = restaurant.dishes[i];
@@ -1034,7 +1034,7 @@ void restaurantsSection()
   int option = 0;
   do
   {
-    printf("\n%s     RESTAURANTES DISPONÍVEIS     \n%s", DIVIDER, DIVIDER);
+    printf("\n%s     RESTAURANTES DISPONiVEIS     \n%s", DIVIDER, DIVIDER);
     for (int i = 0; i < restaurants_count; i++)
     {
       printf("%d. %s\n", i + 1, restaurants[i].name);
@@ -1056,7 +1056,7 @@ void addressSection()
   int option = 0;
   do
   {
-    printf("\n%s      MEUS ENDEREÇOS      \n%s", DIVIDER, DIVIDER);
+    printf("\n%s      MEUS ENDEREcOS      \n%s", DIVIDER, DIVIDER);
     showAddress();
     option = optionHandler("1. Adicionar endereco\n2. Remover endereco\n3. Voltar\nOpcao: ");
 
@@ -1113,7 +1113,7 @@ void cardSection()
   int option = 0;
   do
   {
-    printf("\n%s       MEUS CARTÕES       \n%s", DIVIDER, DIVIDER);
+    printf("\n%s       MEUS CARToES       \n%s", DIVIDER, DIVIDER);
     showCards();
     option = optionHandler("1. Adicionar cartao\n2. Remover cartao\n3. Voltar\nOpcao: ");
 
@@ -1153,7 +1153,7 @@ void profile()
   int option = 0;
   do
   {
-    printf("\n%s     CONFIGURAÇÕES DA CONTA     \n%s", DIVIDER, DIVIDER);
+    printf("\n%s     CONFIGURAcoES DA CONTA     \n%s", DIVIDER, DIVIDER);
     option = optionHandler("1. Enderecos\n2. Cartoes\n3. Dados da conta\n4. Voltar\nOpcao: ");
     switch (option)
     {
@@ -1202,7 +1202,7 @@ void finalizeBag(struct Bag *bag)
   printf("\n%s   FINALIZANDO PEDIDO   \n%s", DIVIDER, DIVIDER);
   do
   {
-    printf("Selecione o endereço de entrega: \n");
+    printf("Selecione o endereco de entrega: \n");
     showAddress();
     addressOption = optionHandler("Opcao: ");
     if (addressOption < 1 || addressOption > currentUser->address_count)
@@ -1481,7 +1481,7 @@ void orderStatus()
 
 void orderHistory()
 {
-  printf("\n%s   HISTÓRICO DE PEDIDOS   \n%s", DIVIDER, DIVIDER);
+  printf("\n%s   HISToRICO DE PEDIDOS   \n%s", DIVIDER, DIVIDER);
   bool hasHistory = false;
   for (int i = 0; i < orders_count; i++)
   {
@@ -1496,7 +1496,7 @@ void orderHistory()
   }
   if (!hasHistory)
   {
-    printf("Nenhum histórico disponível.\n");
+    printf("Nenhum historico disponivel.\n");
   }
   printf("%s", DIVIDER);
 }
@@ -1821,7 +1821,7 @@ void ordersSection(struct Restaurant *restaurant)
     case 3:
       return;
     default:
-      printf("Opção inválida.\n");
+      printf("Opcao invalida.\n");
       break;
     }
 
@@ -1938,150 +1938,150 @@ void app(const int loggedAs)
 
 void createAccount()
 {
-    int id = users_count;
-    AccountType accountType = CUSTOMER;
-    char username[20];
-    char email[100];
-    bool successEmail = false;
-    char password[100];
+  int id = users_count;
+  AccountType accountType = CUSTOMER;
+  char username[20];
+  char email[100];
+  bool successEmail = false;
+  char password[100];
 
-    printf("\n--- Nova Conta ---\n");
-    printf("Username: ");
-    fgets(username, 20, stdin);
-    username[strcspn(username, "\n")] = 0;
-    do
+  printf("\n--- Nova Conta ---\n");
+  printf("Username: ");
+  fgets(username, 20, stdin);
+  username[strcspn(username, "\n")] = 0;
+  do
+  {
+    successEmail = true;
+
+    printf("Email: ");
+    scanf("%s", email);
+
+    for (int i = 0; i < users_count; i++)
     {
-        successEmail = true;
+      if (strcmp(users[i].email, email) == 0)
+      {
+        printf("Este email ja esta em uso! Tente novamente.\n");
+        successEmail = false;
 
-        printf("Email: ");
-        scanf("%s", email);
-
-        for (int i = 0; i < users_count; i++)
-        {
-            if (strcmp(users[i].email, email) == 0)
-            {
-                printf("Este email ja esta em uso! Tente novamente.\n");
-                successEmail = false;
-
-                break;
-            }
-        }
-    } while (successEmail == false);
-
-    printf("Senha: ");
-    scanf("%s", password);
-    do
-    {
-        accountType = optionHandler("Tipo de conta:\n1. Consumidor\n2. Restaurante\n3. Ambos\nOpcao: ");
-    } while (accountType != 1 && accountType != 2 && accountType != 3);
-
-    users[id].id = id;
-    users[id].accountType = accountType;
-    strcpy(users[id].email, email);
-    strcpy(users[id].password, password);
-    strcpy(users[id].username, username);
-
-    bags[bags_count].id = bags_count;
-    bags[bags_count].userId = id;
-    bags[bags_count].dishOrdersCount = 0;
-
-    bags_count++;
-    users_count++;
-
-    printf("\n[v] Usuario criado com sucesso!\n");
-    if (accountType == 2 || accountType == 3)
-    {
-        printf("--- Configurar Restaurante ---\n");
-        createRestaurantProfile(&users[users_count - 1]);
+        break;
+      }
     }
+  } while (successEmail == false);
+
+  printf("Senha: ");
+  scanf("%s", password);
+  do
+  {
+    accountType = optionHandler("Tipo de conta:\n1. Consumidor\n2. Restaurante\n3. Ambos\nOpcao: ");
+  } while (accountType != 1 && accountType != 2 && accountType != 3);
+
+  users[id].id = id;
+  users[id].accountType = accountType;
+  strcpy(users[id].email, email);
+  strcpy(users[id].password, password);
+  strcpy(users[id].username, username);
+
+  bags[bags_count].id = bags_count;
+  bags[bags_count].userId = id;
+  bags[bags_count].dishOrdersCount = 0;
+
+  bags_count++;
+  users_count++;
+
+  printf("\n[v] Usuario criado com sucesso!\n");
+  if (accountType == 2 || accountType == 3)
+  {
+    printf("--- Configurar Restaurante ---\n");
+    createRestaurantProfile(&users[users_count - 1]);
+  }
 }
 
 void login()
 {
-    AccountType loginAs = 1;
-    char email[MAX_LEN] = "";
-    bool loggedIn = false;
+  AccountType loginAs = 1;
+  char email[MAX_LEN] = "";
+  bool loggedIn = false;
 
-    do
+  do
+  {
+    char password[MAX_LEN] = "";
+    printf("\n--- Login (Digite 'exit' para voltar) ---\n");
+    printf("Email: ");
+
+    if (fgets(email, MAX_LEN, stdin) == NULL)
     {
-        char password[MAX_LEN] = "";
-        printf("\n--- Login (Digite 'exit' para voltar) ---\n");
-        printf("Email: ");
+      break;
+    }
+    email[strcspn(email, "\n")] = 0;
 
-        if (fgets(email, MAX_LEN, stdin) == NULL)
+    if (strcmp(email, "exit") == 0)
+    {
+      return;
+    }
+
+    printf("Senha: ");
+    if (fgets(password, MAX_LEN, stdin) == NULL)
+    {
+      break;
+    }
+
+    password[strcspn(password, "\n")] = 0;
+
+    for (int i = 0; i < users_count; i++)
+    {
+      if (strcmp(users[i].email, email) == 0 && strcmp(users[i].password, password) == 0)
+      {
+        if (users[i].accountType == BOTH)
         {
-            break;
+          int op = 0;
+          op = optionHandler("Entrar como:\n1. Consumidor\n2. Restaurante\nOpcao: ");
+          loginAs = op;
         }
-        email[strcspn(email, "\n")] = 0;
-
-        if (strcmp(email, "exit") == 0)
+        else
         {
-            return;
+          loginAs = users[i].accountType;
         }
 
-        printf("Senha: ");
-        if (fgets(password, MAX_LEN, stdin) == NULL)
-        {
-            break;
-        }
+        loggedIn = true;
+        break;
+      }
+    }
+    if (!loggedIn)
+      printf("(!) Email ou senha incorretos.\n");
+  } while (loggedIn == false);
 
-        password[strcspn(password, "\n")] = 0;
+  currentUser = findUserByEmail(email);
 
-        for (int i = 0; i < users_count; i++)
-        {
-            if (strcmp(users[i].email, email) == 0 && strcmp(users[i].password, password) == 0)
-            {
-                if (users[i].accountType == BOTH)
-                {
-                    int op = 0;
-                    op = optionHandler("Entrar como:\n1. Consumidor\n2. Restaurante\nOpcao: ");
-                    loginAs = op;
-                }
-                else
-                {
-                    loginAs = users[i].accountType;
-                }
-
-                loggedIn = true;
-                break;
-            }
-        }
-        if (!loggedIn)
-            printf("(!) Email ou senha incorretos.\n");
-    } while (loggedIn == false);
-
-    currentUser = findUserByEmail(email);
-
-    app(loginAs);
+  app(loginAs);
 }
 
 void homePage()
 {
-    int option = 0;
-    do
+  int option = 0;
+  do
+  {
+    option = 0;
+    printf("\n%s\n        BEM-VINDO AO IFOOD (CLI)        \n%s", DIVIDER, DIVIDER);
+    option = optionHandler(
+        "1. Criar conta \n2. Fazer Login \n3. Sair\nOpcao: ");
+    switch (option)
     {
-        option = 0;
-        printf("\n%s\n        BEM-VINDO AO IFOOD (CLI)        \n%s", DIVIDER, DIVIDER);
-        option = optionHandler(
-            "1. Criar conta \n2. Fazer Login \n3. Sair\nOpcao: ");
-        switch (option)
-        {
-        case 1:
-            createAccount();
-            break;
-        case 2:
-            login();
-            break;
-        case 3:
-            return;
-        default:
-            printf("Opcao invalida");
-        }
-    } while (option != 5);
+    case 1:
+      createAccount();
+      break;
+    case 2:
+      login();
+      break;
+    case 3:
+      return;
+    default:
+      printf("Opcao invalida");
+    }
+  } while (option != 5);
 }
 
 int main(void)
 {
-    homePage();
-    return 0;
+  homePage();
+  return 0;
 }

@@ -277,7 +277,7 @@ void ordersSection(struct Restaurant *restaurant)
     case 3:
       return;
     default:
-      printf("Opção inválida.\n");
+      printf("Opcao invalida.\n");
       break;
     }
   } while (true);
@@ -344,7 +344,7 @@ void reportSection(struct Restaurant *restaurant)
 
   do
   {
-    printf("\n%s   RELATÓRIOS DO RESTAURANTE   \n%s", DIVIDER, DIVIDER);
+    printf("\n%s   RELATORIOS DO RESTAURANTE   \n%s", DIVIDER, DIVIDER);
     int option = optionHandler("1. Ver relatorios de vendas\n2. Ver relatorios de clientes\n3. Voltar\nOpcao: ");
     switch (option)
     {

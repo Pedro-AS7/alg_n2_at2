@@ -115,7 +115,7 @@ struct Address createAddress()
   char neighborhood[MAX_LEN];
   struct Address newAddr = {0};
 
-  printf("\n--- Novo Endereço ---\n");
+  printf("\n--- Novo Endereco ---\n");
   printf("CEP: ");
   if (fgets(cep, 10, stdin) == NULL)
     return newAddr;
@@ -153,13 +153,13 @@ void addAddress()
 {
   if (currentUser->address_count >= 5)
   {
-    printf("\n(!) Limite de endereços atingido.\n");
+    printf("\n(!) Limite de enderecos atingido.\n");
     return;
   }
 
   currentUser->address[currentUser->address_count] = createAddress();
   currentUser->address_count++;
-  printf("\n[v] Endereço adicionado com sucesso!\n");
+  printf("\n[v] Endereco adicionado com sucesso!\n");
 }
 
 void inputDaySchedule(const char *dayName, struct DaySchedule *schedule)
@@ -179,14 +179,14 @@ void setOpeningHours(struct Restaurant *restaurant)
 {
   struct DaySchedule dom, seg, ter, qua, qui, sex, sab;
 
-  printf("\n%s\nDefina o horário de funcionamento:\n%s", DIVIDER, SUB_DIVIDER);
+  printf("\n%s\nDefina o horario de funcionamento:\n%s", DIVIDER, SUB_DIVIDER);
   inputDaySchedule("Domingo", &dom);
   inputDaySchedule("Segunda-feira", &seg);
-  inputDaySchedule("Terça-feira", &ter);
+  inputDaySchedule("Terca-feira", &ter);
   inputDaySchedule("Quarta-feira", &qua);
   inputDaySchedule("Quinta-feira", &qui);
   inputDaySchedule("Sexta-feira", &sex);
-  inputDaySchedule("Sábado", &sab);
+  inputDaySchedule("Sabado", &sab);
 
   restaurant->opening_hours.dom = dom;
   restaurant->opening_hours.seg = seg;
@@ -201,7 +201,7 @@ void deleteAddress(int addressIndex)
 {
   if (currentUser->address_count == 0 || addressIndex < 0 || addressIndex >= currentUser->address_count)
   {
-    printf("Erro: Índice inválido.\n");
+    printf("Erro: indice invalido.\n");
     return;
   }
 
@@ -212,7 +212,7 @@ void deleteAddress(int addressIndex)
 
   currentUser->address_count--;
 
-  printf("\n%s Endereço removido com sucesso.\n%s", SUB_DIVIDER, SUB_DIVIDER);
+  printf("\n%s Endereco removido com sucesso.\n%s", SUB_DIVIDER, SUB_DIVIDER);
 }
 
 void addCard()
@@ -224,11 +224,11 @@ void addCard()
 
   if (currentUser->creditcard_count >= 5)
   {
-    printf("\n(!) Limite de cartões atingido.\n");
+    printf("\n(!) Limite de cartoes atingido.\n");
     return;
   }
 
-  printf("\n--- Novo Cartão ---\n");
+  printf("\n--- Novo Cartao ---\n");
   printf("Nome no cartao: ");
   if (fgets(name, MAX_LEN, stdin) == NULL)
     return;
@@ -264,7 +264,7 @@ void deleteCard(int cardIndex)
 {
   if (currentUser->creditcard_count == 0 || cardIndex < 0 || cardIndex >= currentUser->creditcard_count)
   {
-    printf("Numero selecionado inválido.\n");
+    printf("Numero selecionado invalido.\n");
     return;
   }
 
@@ -341,7 +341,7 @@ void deleteDishOption(struct Dish *dish, int optionIndex)
 {
   if (dish->optionCount == 0 || optionIndex < 0 || optionIndex >= dish->optionCount)
   {
-    printf("Índice inválido.\n");
+    printf("indice invalido.\n");
     return;
   }
 
@@ -379,7 +379,7 @@ void deleteDishOptionOptions(struct DishOptions *dishOptions, int optionIndex)
 {
   if (dishOptions->optionsCount == 0 || optionIndex < 0 || optionIndex >= dishOptions->optionsCount)
   {
-    printf("Índice de deleção inválido.\n");
+    printf("indice de delecao invalido.\n");
     return;
   }
 
@@ -514,7 +514,7 @@ void deleteDish(struct Restaurant *restaurant, int dishIndex)
 {
   if (restaurant->dishCount == 0 || dishIndex < 0 || dishIndex >= restaurant->dishCount)
   {
-    printf("Índice inválido.\n");
+    printf("indice invalido.\n");
     return;
   }
 
@@ -543,7 +543,7 @@ void showRestaurantOrders(struct Restaurant *restaurant)
       for (int j = 0; j < orders[i].dishOrdersCount; j++)
       {
         struct DishOrder currentDishOrder = orders[i].dishOrders[j];
-        printf("  > %s (Opções: %d)\n", currentDishOrder.dish.name, currentDishOrder.dishOptionsCount);
+        printf("  > %s (Opcoes: %d)\n", currentDishOrder.dish.name, currentDishOrder.dishOptionsCount);
       }
       printf("%s", SUB_DIVIDER);
     }
@@ -606,7 +606,7 @@ void dishesRanking(struct Restaurant *restaurant, int reportPeriod)
     }
   }
 
-  // Criar array de índices e ordenar por contagem (descendente)
+  // Criar array de indices e ordenar por contagem (descendente)
   int indices[20];
   for (int i = 0; i < restaurant->dishCount; i++)
   {
@@ -716,18 +716,18 @@ void generateSellesReport(struct Restaurant *restaurant, int reportPeriod)
     periodText = "Esta semana";
     break;
   case 3:
-    periodText = "Este mês";
+    periodText = "Este mes";
     break;
   case 4:
     periodText = "Este ano";
     break;
   default:
-    periodText = "Período desconhecido";
+    periodText = "Periodo desconhecido";
     break;
   }
 
-  printf("\n%s RELATÓRIO DE VENDAS: %s - %s \n%s", DIVIDER, restaurant->name, periodText, DIVIDER);
-  printf("Total de Pedidos Concluídos: %d\n", completedOrders);
+  printf("\n%s RELATORIO DE VENDAS: %s - %s \n%s", DIVIDER, restaurant->name, periodText, DIVIDER);
+  printf("Total de Pedidos Concluidos: %d\n", completedOrders);
   printf("Faturamento Total: R$ %.2f\n", totalSales);
   printf("Pratos mais vendidos no periodo:\n");
   dishesRanking(restaurant, reportPeriod);
@@ -746,13 +746,13 @@ void generateCustomersReport(struct Restaurant *restaurant, int reportPeriod)
     periodText = "Esta semana";
     break;
   case 3:
-    periodText = "Este mês";
+    periodText = "Este mes";
     break;
   case 4:
     periodText = "Este ano";
     break;
   default:
-    periodText = "Período desconhecido";
+    periodText = "Periodo desconhecido";
     break;
   }
   printf("\n%s RELATORIO DE CLIENTES: %s - %s \n%s", DIVIDER, restaurant->name, periodText, DIVIDER);
