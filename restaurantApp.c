@@ -191,15 +191,28 @@ void manageOrder(struct Restaurant *restaurant, int orderIndex, int mirrorIndex)
     int newStatus = optionHandler("Opcao: ");
     if (newStatus >= STATUS_PENDING && newStatus <= STATUS_CANCELED)
     {
-      order->status = newStatus;
-      printf("Status atualizado para: %s\n", getStatusText(order->status));
-      if (order->status == STATUS_CANCELED)
+      switch (newStatus)
       {
-        printf("O pedido foi cancelado.\n");
-      }
-      if (order->status == STATUS_COMPLETED)
-      {
+      case 1:
+        order->status = STATUS_PENDING;
+        break;
+      case 2:
+        order->status = STATUS_PREPARING;
+        break;
+      case 3:
+        order->status = STATUS_DELIVERING;
+        break;
+      case 4:
+        order->status = STATUS_COMPLETED;
         order->deliveryDate = time(NULL);
+        break;
+      case 5:
+        order->status = STATUS_CANCELED;
+        printf("O pedido foi cancelado.\n");
+        break;
+
+      default:
+        break;
       }
     }
     else

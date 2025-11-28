@@ -589,13 +589,19 @@ void bagSection()
 void orderStatus()
 {
   int option = 0;
+  int counter = 0;
   for (int i = 0; i < orders_count; i++)
   {
+    if (orders[i].user_id == currentUser->id && (orders[i].status == STATUS_CANCELED || orders[i].status == STATUS_CONFIRMED))
+    {
+      counter++;
+      continue;
+    }
     if (orders[i].user_id == currentUser->id && orders[i].status != STATUS_CANCELED && orders[i].status != STATUS_CONFIRMED)
     {
-      char *date = ctime(&orders[i].creationDate);
+      struct tm *date = localtime(&orders[i].creationDate);
       printf("\n%s   ACOMPANHAMENTO DO PEDIDO   \n%s", DIVIDER, DIVIDER);
-      printf("Pedido #%d | Data: %s", orders[i].id, date);
+      printf("Pedido #%d | Data: %d/%d/%d\n", counter, date->tm_mday, date->tm_mon + 1, date->tm_year + 1900);
       printf("Status Atual: [%s]\n", getStatusText(orders[i].status));
       printf("%s", SUB_DIVIDER);
 
@@ -653,13 +659,15 @@ void orderHistory()
 {
   printf("\n%s   HISTORICO DE PEDIDOS   \n%s", DIVIDER, DIVIDER);
   bool hasHistory = false;
+  int count = 0;
   for (int i = 0; i < orders_count; i++)
   {
     if (orders[i].user_id == currentUser->id && (orders[i].status == STATUS_CANCELED || orders[i].status == STATUS_CONFIRMED))
     {
+      count++;
       hasHistory = true;
-      char *date = ctime(&orders[i].creationDate);
-      printf("Pedido #%d | Data: %s", orders[i].id, date);
+      struct tm *date = localtime(&orders[i].creationDate);
+      printf("Pedido #%d | Data: %d/%d/%d\n", count, date->tm_mday, date->tm_mon + 1, date->tm_year + 1900);
       printf("Status Final: %s\n", getStatusText(orders[i].status));
       printf("%s", SUB_DIVIDER);
     }

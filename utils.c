@@ -40,6 +40,8 @@ char *getStatusText(int status)
     return "Entregue";
   case STATUS_CANCELED:
     return "Cancelado";
+  case STATUS_CONFIRMED:
+    return "Confirmado";
   default:
     return "Desconhecido";
   }
